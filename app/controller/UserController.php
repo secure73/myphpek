@@ -1,9 +1,9 @@
 <?php
 namespace App\Controller;
-use App\Model\User;
-use LDAP\Result;
-
 require_once('./app/model/User.php');
+use App\Model\User;
+
+
 class UserController extends User
 {
     public function __construct()
