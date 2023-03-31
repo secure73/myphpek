@@ -1,22 +1,31 @@
 <?php
-include('./template/navbar.php');
 
-if(isset($_POST['email']))
-{
-  $email = $_POST['email'];
-  $password  = $_POST['password'];
+require_once('./app/controller/UserController.php');
+use App\Controller\UserController;
+
+$email = "";
+$error = "";
+if (isset($_POST['email'])) {
+  $controller = new UserController();
+  $result = $controller->login($_POST['email'], $_POST['password']);
+  if($result)
+  {
+    header('location:profile.php');
+  }
+  else
+  {
+   $error =  "user pass wrong";
+  }
+ 
 }
-
-
-//1: find user by email
-// 2: check email password if correct is
-//3: if correct redirect to profile.php
+include('./template/navbar.php');
 
 ?>
 <div class="m-3">
   <h1>Login</h1>
-
+  
   <div class="card flex m-5 p-5 bg-secondary bg-opacity-10">
+  <?= $email ?>
     <form method="post" class="">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -31,6 +40,6 @@ if(isset($_POST['email']))
       <br>
       <button type="submit" class="btn btn-primary">Submit</button>
   </div>
-</form>
+  </form>
 </div>
 <?php include('./template/footer.php'); ?>
