@@ -15,7 +15,7 @@ class Profile extends ProfileTable
     public function findProfileByUserId(int $user_id):bool
     {
         $this->selectProfileByUserId($user_id);
-        if($this->id)
+        if(isset($this->id))
         {
             return true;
         }

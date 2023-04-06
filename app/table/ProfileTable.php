@@ -6,13 +6,14 @@ use Table\Database\QueryProvider;
  //CRUD  = Create Read Update Delete
 class ProfileTable extends QueryProvider {
    public int $id;
-   public int $user_id;
-   public string $first_name;
-   public string $last_name;
-   public string $picture;
+   public ?int $user_id;
+   public ?string $first_name;
+   public ?string $last_name;
+   public ?string $picture;
 
 
    public function __construct() {
+      
       parent::__construct();
    }
 
@@ -21,8 +22,8 @@ class ProfileTable extends QueryProvider {
       $query = "SELECT * FROM profiles WHERE user_id = :user_id";
       $array = [':user_id'=>$user_id];
       $result = $this->selectQuery($query,$array);
-      var_dump($result);
-      if(is_array($result))
+      
+      if(is_array($result) && count($result) > 0)
       {
          $this->convertSelectResultToObject($result);
       }
