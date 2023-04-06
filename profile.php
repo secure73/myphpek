@@ -23,12 +23,15 @@ $exist = $profile->findProfileByUserId($_SESSION['id']);
 
     <div class=col-md-6>
         <?php if ($exist): ?>
-
-            <button class="btn btn-primary">Edit profile</button>
+            <form method="post">
+            <button tyepe="sublit" class="btn btn-primary">Edit profile</button>
+        </form>
+           
         <?php endif ?>
         <?php if (!$exist): ?>
-
-            <button class="btn btn-success">create profile</button>
+            <form method="post">
+            <button type="submit" name="create_profile"class="btn btn-success">create profile</button>
+            </form>
         <?php endif ?>
     </div>
 
