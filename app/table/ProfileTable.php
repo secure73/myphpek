@@ -21,6 +21,7 @@ class ProfileTable extends QueryProvider {
       $query = "SELECT * FROM profiles WHERE user_id = :user_id";
       $array = [':user_id'=>$user_id];
       $result = $this->selectQuery($query,$array);
+      var_dump($result);
       if(is_array($result))
       {
          $this->convertSelectResultToObject($result);
