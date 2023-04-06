@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('./app/controller/UserController.php');
 use App\Controller\UserController;
 
